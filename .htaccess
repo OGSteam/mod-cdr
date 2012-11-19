@@ -1,0 +1,11 @@
+#Exemple pour autoriser l'accès direct aux fichiers .png, .jpg, .gif uniquement
+<Files *.png>
+Allow from all
+</Files>
+<Files *.jpg>
+Allow from all
+</Files>
+<Files *.gif>
+Allow from all
+</Files>
+deny from all
