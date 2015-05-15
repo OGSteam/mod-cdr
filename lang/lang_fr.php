@@ -6,25 +6,25 @@
 
 $lang['menu_cdr'] = "Champs de ruines";
 $lang['menu_option'] = "Option";
-$lang['coord'] = "Coordonnées";
+$lang['coord'] = "CoordonnÃ©es";
 $lang['nb_recy'] = "Nombre de recycleurs";
 $lang['total'] = "Total";
-$lang['metal'] = "Métal";
+$lang['metal'] = "MÃ©tal";
 $lang['crystal'] = "Cristal";
 $lang['date'] = "Date";
 $lang['date_format'] = "d/m/Y h:m:s";
 $lang['more_than'] = "+ de";
 $lang['optionof'] = "Options de "./*$mod_version*/"%s";
-$lang['tcdt'] = "Taille des Cdr à voir";
+$lang['tcdt'] = "Taille des Cdr Ã  voir";
 $lang['colorcdr'] = "Couleur des Cdr";
 $lang['tri'] = "Choix de tri";
 $lang['ascending'] = "Croissant";
-$lang['descending'] = "Décroissant";
-$lang['galaxy'] = "Galaxie par défaut";
-$lang['update'] = "Mise à jour";
-$lang['xtense_ok'] = "La compatibilité du mod CDR avec le mod Xtense2 est installée !";
-$lang['no_xtense'] = "Le mod Xtense 2 n\'est pas installé.\nLa compatibilité du mod cdr ne sera donc pas installé !\nPensez à installer Xtense 2, c'est pratique";
-$lang['xtense_gone'] = "La compatibilité du mod cdr avec le mod Xtense2 a été désinstallée !";
-$lang['cdr_bye'] = "Merci d\'avoir utilisé cdr\nÀ bientôt !";
+$lang['descending'] = "DÃ©croissant";
+$lang['galaxy'] = "Galaxie par dÃ©faut";
+$lang['update'] = "Mise Ã  jour";
+$lang['xtense_ok'] = "La compatibilitÃ© du mod CDR avec le mod Xtense2 est installÃ©e !";
+$lang['no_xtense'] = "Le mod Xtense 2 n\'est pas installÃ©.\nLa compatibilitÃ© du mod cdr ne sera donc pas installÃ© !\nPensez Ã Â installer Xtense 2, c'est pratique";
+$lang['xtense_gone'] = "La compatibilitÃ© du mod cdr avec le mod Xtense2 a Ã©tÃ© dÃ©sinstallÃ©e !";
+$lang['cdr_bye'] = "Merci d\'avoir utilisÃ© cdr\nÃ€ bientÃ´t !";
 
 ?>
