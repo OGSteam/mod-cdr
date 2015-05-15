@@ -14,11 +14,11 @@ $lang['crystall'] = "Kristall";
 $lang['date'] = "Datum";
 $lang['more_than'] = "+ von";
 $lang['optionof'] = "Option";
-$lang['tcdt'] = "Größe von Feldern von zu sehenden Ruinen";
+$lang['tcdt'] = "GrÃ¶ÃŸe von Feldern von zu sehenden Ruinen";
 $lang['colorcdr'] = "Farbe der Felder von Ruinen";
 $lang['tri'] = "Auswahl von Aussortieren";
-$lang['ascending'] = "Hörnchen";
+$lang['ascending'] = "HÃ¶rnchen";
 $lang['descending'] = "Abnehmend";
-$lang['Galaxie'] = "Milchstraße abgerundet";
+$lang['Galaxie'] = "MilchstraÃŸe abgerundet";
 
 ?>
