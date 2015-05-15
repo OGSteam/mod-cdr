@@ -134,11 +134,11 @@ if (isset($pub_subaction)) {
 
 		$req = "SELECT count(id_user) FROM ".M_CDR." WHERE id_user=".$user_data['user_id'];
 		$req1 = $db->sql_query($req);
-		list($id_exist) = mysql_fetch_array($req1);
+		list($id_exist) = $db->sql_fetch_row($req1);
 		if ($id_exist >= 1) $req = "SELECT * FROM ".M_CDR." WHERE id_user=".$user_data['user_id'];
 		else $req = "SELECT * FROM ".M_CDR." WHERE id_user=0";
 		$req1= $db->sql_query($req);
-		$tc = mysql_fetch_array($req1);
+		$tc = $db->sql_fetch_row($req1);
 ?>
 
 		<br/><br/>
@@ -232,7 +232,7 @@ if (isset($pub_subaction)) {
 		else $req = "SELECT * FROM ".M_CDR." WHERE id_user = 0";
 
 		$req1 = $db->sql_query($req);
-		$tc = mysql_fetch_array($req1);
+		$tc = $db->sql_fetch_row($req1);
 
 		$Txt = (isset($pub_taille0))? $pub_taille0 : "";
 		$TS = (isset($pub_T_Small))? $pub_T_Small : "";
@@ -256,7 +256,7 @@ if (isset($pub_subaction)) {
 			}
 			$req = "SELECT * FROM ".M_CDR." WHERE id_user=".$user_data['user_id'];
 			$req1 = $db->sql_query($req);
-			$tc = mysql_fetch_array($req1);
+			$tc = $db->sql_fetch_row($req1);
 		}
 ?>
 
