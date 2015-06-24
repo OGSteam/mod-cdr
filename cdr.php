@@ -247,12 +247,12 @@ if (isset($pub_subaction)) {
 
 		if (isset($pub_add) == 1) {
 			if ($user_data['user_id'] == $tc['id_user']) {
-				mysql_query("UPDATE ".M_CDR
+				$db->sql_query("UPDATE ".M_CDR
 					." SET taille='$Txt', small='$TS', small_color='$CS', medium='$TM', medium_color='$CM', big='$TB', big_color='$CB', tri1='$tr1', tri2='$tr2', galaxy='$gal'"
 					." WHERE id_user=".$user_data['user_id']);
 			} else {
 				$reg= "INSERT INTO ".M_CDR." (id_user,taille,small,small_color,medium,medium_color,big,big_color,tri1,tri2,galaxy) VALUES (".$user_data['user_id'].",'5000','10000','FFFF00','20000','FFA500','50000','FF0000','total','desc','0')";
-				$req = mysql_query($reg);
+				$req = $db->sql_query($reg);
 			}
 			$req = "SELECT * FROM ".M_CDR." WHERE id_user=".$user_data['user_id'];
 			$req1 = $db->sql_query($req);
@@ -266,19 +266,19 @@ if (isset($pub_subaction)) {
 			<input type="hidden" name="add" value="1" />
 			<table width='80%'>
 				<tr>
-					<td class='c' colspan='6'><center><?php echo $user_data['user_name']; ?></center></td>
+					<td class='c' colspan='6' style="text-align: center;"><?php echo $user_data['user_name']; ?></td>
 				</tr>
 			</table>
 			<br/>
 			<table width='20%'>
-				<td class='c' colspan='2'><center>Xtense</center></td>
+				<td class='c' colspan='2' style="text-align: center;">Xtense</td>
 				<tr>
 					<th class='c' width='50%'><?php echo $lang['tcdt']; ?></th>
 					<th class='c' width='25%'>
 						<input style="text-align:center" type="text" name="taille0" size="10" maxlength="10" value="<?php echo $tc['taille']; ?>" />
 					</th>
 				</tr>
-				<td class='c' colspan='2'><center><?php echo $lang['colorcdr']; ?></center></td>
+				<td class='c' colspan='2' style="text-align: center;"><?php echo $lang['colorcdr']; ?></td>
 				<tr>
 					<th class='c' width='20%'><?php echo $lang['more_than']; ?><input style="text-align:center" type="text" size="10" name="T_Small" value="<?php echo $tc['small']; ?>" /></th>
 					<td align='center' BGCOLOR="#<?php echo $tc['small_color']; ?>">
@@ -294,7 +294,7 @@ if (isset($pub_subaction)) {
 					<td align='center' BGCOLOR="#<?php echo $tc['big_color']; ?>">
 						<input style="text-align:center" size="10" type="text" name="C_big" maxlength="6" value="<?php echo $tc['big_color']; ?>" /></td>
 				</tr>
-				<td class='c' colspan='2'><center><?php echo $lang['tri']; ?></center></td>
+				<td class='c' colspan='2' style="text-align: center;"><?php echo $lang['tri']; ?></td>
 				<tr>
 					<th>
 						<select name="tri1">
