@@ -19,16 +19,16 @@
     function TableOrder(e, Dec) { //Dec= 0:Croissant, 1:Décroissant
 //---- Détermine : oCell(cellule) oTable(table) index(index cellule) -----//
         var FntSort;
-        FntSort = new Array();
+        FntSort = [];
         if (!e) e = window.event;
         for (oCell = e.srcElement ? e.srcElement : e.target; oCell.tagName != "TD"; oCell = oCell.parentNode); //determine la cellule sélectionnée
         for (oTable = oCell.parentNode; oTable.tagName != "TABLE"; oTable = oTable.parentNode); //determine l'objet table parent
         for (index = 0; oTable.rows[0].cells[index] != oCell; index++); //determine l'index de la cellule
 
 //---- Copier Tableau Html dans Table JavaScript ----//
-        var table = new Array();
+        var table = [];
         for (r = 1; r < oTable.rows.length; r++)
-            table[r - 1] = new Array();
+            table[r - 1] = [];
 
         for (c = 0; c < oTable.rows[0].cells.length; c++) { //Sur toutes les cellules
             var Type;
