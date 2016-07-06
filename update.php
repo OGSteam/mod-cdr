@@ -64,4 +64,4 @@ if ($ver[0] < 1.60) {
 	$db->sql_query($query);
 }
 }
-?>
+

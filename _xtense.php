@@ -20,9 +20,17 @@ define("TABLE_CDR", $table_prefix . "cdr");
 // TEST XTENSE2
 
 if (class_exists("Callback")) {
+    /**
+     * Class cdr_Callback
+     */
     class cdr_Callback extends Callback
     {
         public $version = '2.3.9';
+
+        /**
+         * @param $system
+         * @return int
+         */
         public function cdr($system)
         {
             global $io;
@@ -31,12 +39,20 @@ if (class_exists("Callback")) {
             else
                 return Io::ERROR;
         }
+
+        /**
+         * @return array
+         */
         public function getCallbacks()
         {
             return array(array('function' => 'cdr', 'type' => 'system'));
         }
     }
 }
+/**
+ * @param $system
+ * @return bool
+ */
 function cdr($system)
 {
     global $sql, $user, $db, $table_prefix; /// $sql ????? quesako ?
@@ -78,5 +94,3 @@ function cdr($system)
     }
     return true;
 }
-
-?>

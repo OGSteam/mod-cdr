@@ -15,5 +15,3 @@ $lang['tri'] = "Choix de tri";
 $lang['ascending'] = "Croissant";
 $lang['descending'] = "Décroissant";
 $lang['galaxy'] = "Galaxie par défaut";
-
-?>
