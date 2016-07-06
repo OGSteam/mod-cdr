@@ -80,7 +80,7 @@
 
 <?php
 /**
- * cdr.php
+ * index.php
  * @package Mod Cdr
  * @version 1.70
  * @author Machine

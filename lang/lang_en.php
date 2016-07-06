@@ -27,4 +27,4 @@ $lang['no_xtense'] = "Xtense2 mod is not installed.\nThe compability with the cd
 $lang['xtense_gone'] = "The compatibility of the cdr mod with the Xtense2 mod is uninstalled!";
 $lang['cdr_bye'] = "Thanks for using the cdr mod\nSee you sonn!";
 
-?>
+

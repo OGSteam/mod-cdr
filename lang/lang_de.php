@@ -21,4 +21,3 @@ $lang['ascending'] = "Hörnchen";
 $lang['descending'] = "Abnehmend";
 $lang['Galaxie'] = "Milchstraße abgerundet";
 
-?>

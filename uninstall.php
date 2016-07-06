@@ -46,4 +46,3 @@ $mod_uninstall_name = "cdr";
 $mod_uninstall_table = $table_prefix."cdr".', '.$table_prefix."mod_cdr";
 uninstall_mod($mod_uninstall_name, $mod_uninstall_table);
 
-?>

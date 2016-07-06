@@ -68,7 +68,7 @@ if (file_exists($filename)) $file = file($filename);
 // modif pour la 3.0.7
 //$query = "INSERT INTO ".TABLE_MOD
 //	." (title, menu, action, root, link, version, active, admin_only)"
-//	." VALUES ('Cdr', 'Cdr', 'cdr', 'cdr', 'cdr.php', '".trim($file[1])."', '1', '0')";
+//	." VALUES ('Cdr', 'Cdr', 'cdr', 'cdr', 'index.php', '".trim($file[1])."', '1', '0')";
 //$db->sql_query($query);
 
 // Insertion de la liaison entre Xtense v2 et cdr
@@ -92,4 +92,4 @@ if ($db->sql_numrows($result) != 0) {
 } else // On averti qu'Xtense 2 n'est pas installé :
 	echo "<script>alert('".$lang['no_xtense']."')</script>";
 }
-?>
+
