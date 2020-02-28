@@ -1,5 +1,5 @@
 <?php
-$lang['menu_cdr'] = "Champs de ruines";
+$lang['menu_cdr'] = "CdR";
 $lang['menu_option'] = "Option";
 $lang['coord'] = " Coordonnées ";
 $lang['nb_recy'] = " Nb de recycleurs ";
