@@ -134,10 +134,18 @@ if (isset($pub_subaction)) {
                         <td class='' ><?php echo $val['gal'] . $val['coord']; ?></td>
                         <td class='' ><?php echo floor($val['total'] / 20000 + 1); ?></td>
                         <td class='' ><?php
-                            if ($val['total'] >= $tc['big']) echo "<span style='color:#" . $tc['big_color'] . "'>" . $cdr_tot . "</span>";
-                            elseif ($cdr_total >= $tc['medium']) echo "<span style='color:#" . $tc['medium_color'] . "'>" . $cdr_tot . "</span>";
-                            elseif ($cdr_total > $tc['small']) echo "<span style='color:#" . $tc['small_color'] . "'>" . $cdr_tot . "</span>";
-                            else echo $cdr_tot;
+                            if ($val['total'] >= $tc['big']) {
+                                echo "<span style='color:#" . $tc['big_color'] . "'>" . $cdr_tot . "</span>";
+                            }
+                            elseif ($cdr_total >= $tc['medium']) {
+                                echo "<span style='color:#" . $tc['medium_color'] . "'>" . $cdr_tot . "</span>";
+                            }
+                            elseif ($cdr_total > $tc['small']) {
+                                echo "<span style='color:#" . $tc['small_color'] . "'>" . $cdr_tot . "</span>";
+                            }
+                            else {
+                                echo $cdr_tot;
+                            }
                             ?></td>
                         <td class='' ><?php
                             if ($val['metal'] >= $tc['big']) {
