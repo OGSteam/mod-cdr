@@ -79,16 +79,13 @@ function cdr($system)
         $total = $metal + $cristal;
         // suppression preventive (pas de doublons et effacement des cdr qui n'existent plus)
         // on supprime du param config
-        $query = "DELETE FROM " . TABLE_CDR . " WHERE gal='" . $gal . "' AND coord='" .
-            $sys . "'";
+        $query = "DELETE FROM " . TABLE_CDR . " WHERE `gal`='$gal' AND `coord`='$sys'";
         $db->sql_query($query);
 
         // si un cdr est present
         if ($total !== 0 && $total > 5000) {
             //test
-            $query = "INSERT INTO " . TABLE_CDR .
-                " (date, total, metal, cristal, gal, coord)" . " VALUES (" . $date . ", " . $total .
-                ", " . $metal . ", " . $cristal . ", '" . $gal . "', '" . $sys . "')";
+            $query = "INSERT INTO " . TABLE_CDR . " (`date`, `total`, `metal`, `cristal`, `gal`, `coord`) VALUES ('$date', '$total', '$metal', '$cristal', '$gal', '$sys')";
             $db->sql_query($query);
         }
     }
