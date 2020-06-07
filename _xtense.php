@@ -55,7 +55,7 @@ if (class_exists("Callback")) {
  */
 function cdr($system)
 {
-    global $sql, $user, $db, $table_prefix; /// $sql ????? quesako ?
+    global $db;
     // dump($system);
     // données a traiter
     // timestamp actuel
@@ -68,14 +68,9 @@ function cdr($system)
         $gal = $system['galaxy'];
         $sys = ':' . $system['system'] . ':' . $rows;
 
-        if (isset($system['data'][$rows]['debris'])) { //après Xtense 2.2
-            $metal = $system['data'][$rows]['debris']['metal'];
-            $cristal = isset($system['data'][$rows]['debris']['cristal']) ? $system['data'][$rows]['debris']['cristal'] :
-                $system['data'][$rows]['debris']['crystal'];
-        } else { //avant Xtense 2.2
-            $metal = $system['data'][$rows]['debris_M'];
-            $cristal = $system['data'][$rows]['debris_C'];
-        }
+        $metal = isset($system['data'][$rows]['debris']['metal']) ? $system['data'][$rows]['debris']['metal'] : 0;
+        $cristal = isset($system['data'][$rows]['debris']['cristal']) ? $system['data'][$rows]['debris']['cristal'] : 0;
+
         $total = $metal + $cristal;
         // suppression preventive (pas de doublons et effacement des cdr qui n'existent plus)
         // on supprime du param config
@@ -86,9 +81,8 @@ function cdr($system)
         // si un cdr est present
         if ($total !== 0 && $total > 5000) {
             //test
-            $query = "INSERT INTO " . TABLE_CDR .
-                " (date, total, metal, cristal, gal, coord)" . " VALUES (" . $date . ", " . $total .
-                ", " . $metal . ", " . $cristal . ", '" . $gal . "', '" . $sys . "')";
+            $query = "INSERT INTO " . TABLE_CDR . " (date, total, metal, cristal, gal, coord)"
+                  . " VALUES (" . $date . ", " . $total .", " . $metal . ", " . $cristal . ", '" . $gal . "', '" . $sys . "')";
             $db->sql_query($query);
         }
     }
