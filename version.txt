@@ -1,4 +1,4 @@
 Champs de ruines
-1.8.5
+1.8.6
 Champs de ruines,Champs de ruines,cdr,cdr,cdr.php,1,0
 3.2.0
