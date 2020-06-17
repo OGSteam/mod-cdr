@@ -15,10 +15,10 @@ global $db, $table_prefix;
 define("TABLE_CDR", $table_prefix."cdr");
 define("TABLE_XTENSE_CALLBACKS", $table_prefix."xtense_callbacks");
 define("TABLE_MOD_CDR", $table_prefix."mod_cdr");
+$mod_folder = "cdr";
+$mod_name = "Champs de ruines";
 
 require_once("mod/cdr/lang/lang_fr.php");
-//modif 3.0.7
-//if (file_exists("mod/cdr/lang/lang_".$server_config['language'].".php")) require_once("mod/cdr/lang/lang_".$server_config['language'].".php");
 
 // On récupère l'id du mod pour xtense...
 $query = "SELECT id FROM ".TABLE_MOD." WHERE action='cdr'";
@@ -44,5 +44,5 @@ echo "<script>alert(".$lang['xtense_gone'].")</script>";
 
 $mod_uninstall_name = "cdr";
 $mod_uninstall_table = $table_prefix."cdr".', '.$table_prefix."mod_cdr";
-uninstall_mod($mod_uninstall_name, $mod_uninstall_table);
+uninstall_mod($mod_name, $mod_uninstall_table);
 
