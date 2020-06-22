@@ -42,23 +42,24 @@ $db->sql_query($query);
 
 // Creation de la table qui recevra les option des membres
 $query = "CREATE TABLE IF NOT EXISTS ".TABLE_MOD_CDR." ("
-	." id_user INT(11) unsigned NOT NULL,"
-	." taille INT(11) NOT NULL,"
-	." small INT(11) NOT NULL,"
-	." small_color varchar(6) NOT NULL,"
-	." medium INT(11) NOT NULL,"
-	." medium_color varchar(6) NOT NULL,"
-	." big INT(11) NOT NULL,"
-	." big_color varchar(6) NOT NULL,"
-	." tri1 varchar(50) NOT NULL,"
-	." tri2 varchar(5) NOT NULL,"
-	." galaxy varchar(3) NOT NULL,"
-	." PRIMARY KEY (id_user)"
+	." `id_user` INT(11) unsigned NOT NULL,"
+	." `taille` INT(11) NOT NULL,"
+	." `small` INT(11) NOT NULL,"
+	." `small_color` varchar(6) NOT NULL,"
+	." `medium` INT(11) NOT NULL,"
+	." `medium_color` varchar(6) NOT NULL,"
+	." `big` INT(11) NOT NULL,"
+	." `big_color` varchar(6) NOT NULL,"
+	." `tri1` varchar(50) NOT NULL,"
+	." `tri2` varchar(5) NOT NULL,"
+	." `galaxy` varchar(3) NOT NULL,"
+	." `retention` varchar(3) default '2' NOT NULL,"
+	." PRIMARY KEY (`id_user`)"
 	.")";
 $db->sql_query($query);
 
 $query = "INSERT INTO ".TABLE_MOD_CDR
-	." (id_user,taille,small,small_color,medium,medium_color,big,big_color,tri1,tri2,galaxy,retention)"
+	." (`id_user`,`taille`,`small`,`small_color`,`medium`,`medium_color`,`big`,`big_color`,`tri1`,`tri2`,`galaxy`,`retention`)"
 	." VALUES ('0','5000','10000','FFFF00','20000','FFA500','50000','FF0000','total','desc','0','2')";
 $db->sql_query($query);
 
