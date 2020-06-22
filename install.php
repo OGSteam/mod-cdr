@@ -58,8 +58,8 @@ $query = "CREATE TABLE IF NOT EXISTS ".TABLE_MOD_CDR." ("
 $db->sql_query($query);
 
 $query = "INSERT INTO ".TABLE_MOD_CDR
-	." (id_user,taille,small,small_color,medium,medium_color,big,big_color,tri1,tri2,galaxy)"
-	." VALUES ('0','5000','10000','FFFF00','20000','FFA500','50000','FF0000','total','desc','0')";
+	." (id_user,taille,small,small_color,medium,medium_color,big,big_color,tri1,tri2,galaxy,retention)"
+	." VALUES ('0','5000','10000','FFFF00','20000','FFA500','50000','FF0000','total','desc','0','2')";
 $db->sql_query($query);
 
 $filename = 'mod/cdr/version.txt';

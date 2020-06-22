@@ -46,22 +46,26 @@ $query = "CREATE TABLE IF NOT EXISTS ".TABLE_MOD_CDR." ("
 	.")";
 $db->sql_query($query);
 
-$query = "SELECT version FROM ".TABLE_MOD." WHERE action='cdr'";
+$query = "SELECT `version` FROM ".TABLE_MOD." WHERE action='cdr'";
 $req = $db->sql_query($query);
 $ver = $db->sql_fetch_row($req);
 
-if ($ver[0] < 1.60) {
-	$query = "ALTER TABLE ".TABLE_MOD_CDR." ADD `tri1` VARCHAR(50) NOT NULL DEFAULT 'total', ADD `tri2` VARCHAR(50) NOT NULL DEFAULT 'desc', ADD `galaxy` VARCHAR(3) NOT NULL DEFAULT 'all'";
-	$db->sql_query($query);
-	$query = "ALTER TABLE ".TABLE_CDR." ADD `gal` INT(1) NOT NULL AFTER `cristal`";
-	$db->sql_query($query);
-	$query = "TRUNCATE TABLE ".TABLE_CDR;
-	$db->sql_query($query);
+    if ($ver[0] < 1.60) {
+        $query = "ALTER TABLE ".TABLE_MOD_CDR." ADD `tri1` VARCHAR(50) NOT NULL DEFAULT 'total', ADD `tri2` VARCHAR(50) NOT NULL DEFAULT 'desc', ADD `galaxy` VARCHAR(3) NOT NULL DEFAULT 'all'";
+        $db->sql_query($query);
+        $query = "ALTER TABLE ".TABLE_CDR." ADD `gal` INT(1) NOT NULL AFTER `cristal`";
+        $db->sql_query($query);
+        $query = "TRUNCATE TABLE ".TABLE_CDR;
+        $db->sql_query($query);
 
-	$query = "INSERT INTO ".TABLE_MOD_CDR
-		." (id_user,taille,small,small_color,medium,medium_color,big,big_color,tri1,tri2,galaxy)"
-		." VALUES ('0','5000','10000','FFFF00','20000','FFA500','50000','FF0000','total','desc','0')";
-	$db->sql_query($query);
-}
+        $query = "INSERT INTO ".TABLE_MOD_CDR
+            ." (id_user,taille,small,small_color,medium,medium_color,big,big_color,tri1,tri2,galaxy)"
+            ." VALUES ('0','5000','10000','FFFF00','20000','FFA500','50000','FF0000','total','desc','0')";
+        $db->sql_query($query);
+    }
+    if (version_compare($ver[0], '1.9.0', '<') < 1.60) {
+        $query = "ALTER TABLE " . TABLE_MOD_CDR . " ADD `retention` varchar(3) default '2' not null";
+        $req = $db->sql_query($query);
+    }
 }
 
