@@ -6,14 +6,25 @@
 
 <table style="width: 60%">
     <tr>
-        <td class='c'><span onclick="document.location.href='index.php?action=cdr&galaxy=all'"><b>ALL</b></td>
+        <td class='c' id='GAll'><span onclick="document.location.href='index.php?action=cdr&galaxy=all'"><b>ALL</b></td>
         <?php
         for ($i = 1; $i <= $server_config['num_of_galaxies']; $i++) {
-            echo "<td class='c'><span onclick=\"document.location.href='index.php?action=cdr&galaxy=" . $i . "'\"><b>G" . $i . "</b></span></td>";
+            echo "<td class='c' id='G{$i}'><span onclick=\"document.location.href='index.php?action=cdr&galaxy={$i}'\"><b>G{$i}</b></span></td>";
         }
         ?>
+
     </tr>
 </table>
+
+<?php
+// On surligne la G Sélectionnée
+    $galaxy = (isset($pub_galaxy)) ? $pub_galaxy : "all";
+    if($galaxy === 'all'){
+        echo "<script>$(\"#GAll\").css( \"color\", \"yellow\" );</script>";
+    } else {
+        echo "<script>$(\"#G{$galaxy}\").css( \"color\", \"yellow\" );</script>";
+    }
+?>
 <br>
 
 <table id="trier" style="background: #2C2C2C; width: 80%">
@@ -110,11 +121,11 @@
 
 <table style="background: #2C2C2C">
     <tr>
-        <td style="width: 2%; background: <?= $tc['small_color']; ?>;"></td>
+        <td style="width: 2%; background: <?= "#".$tc['small_color']; ?>;"></td>
         <td style="width: 10%;">&nbsp;<?= $lang['more_than'] . " ". number_format($tc['small'], 0, '', ' '); ?></td>
-        <td style="width: 2%; background-color: <?= $tc['medium_color']; ?>" ></td>
+        <td style="width: 2%; background-color: <?= "#".$tc['medium_color']; ?>" ></td>
         <td style="width: 10%;">&nbsp;<?= $lang['more_than'] . " ". number_format($tc['medium'], 0, '', ' '); ?></td>
-        <td style="width: 2%; background-color: <?= $tc['big_color']; ?>"></td>
+        <td style="width: 2%; background-color: <?= "#".$tc['big_color']; ?>"></td>
         <td style="width: 10%;">&nbsp;<?= $lang['more_than'] . " ". number_format($tc['big'], 0, '', ' '); ?></td>
     </tr>
 </table>
