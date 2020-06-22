@@ -15,8 +15,9 @@ global $db, $table_prefix, $user_data;
 define("TABLE_XTENSE_CALLBACKS", $table_prefix . "xtense_callbacks");
 define("T_CDR", $table_prefix . "cdr");
 define("M_CDR", $table_prefix . "mod_cdr");
+list($version, $root) = $db->sql_fetch_row($db->sql_query("SELECT `version`, `root` FROM " . TABLE_MOD . " WHERE `action` = 'cdr'"));
 
-require_once("mod/cdr/lang/lang_fr.php");
+require_once("mod/{$root}/lang/" . $ui_lang . "/lang_cdr.php");
 
 
 $req = "SELECT COUNT(`id_user`) FROM " . M_CDR . " WHERE `id_user` =" . $user_data['user_id'];
