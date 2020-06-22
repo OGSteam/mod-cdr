@@ -18,7 +18,7 @@ define("TABLE_MOD_CDR", $table_prefix."mod_cdr");
 $mod_folder = "cdr";
 $mod_name = "Champs de ruines";
 
-require_once("mod/cdr/lang/lang_fr.php");
+require_once("mod/cdr/lang/lang_cdr.php");
 
 // On récupère l'id du mod pour xtense...
 $query = "SELECT id FROM ".TABLE_MOD." WHERE action='cdr'";

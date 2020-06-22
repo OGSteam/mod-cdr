@@ -13,30 +13,23 @@ if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 global $db, $table_prefix;
 
-$security = false;
 $mod_folder = "cdr";
 $security = install_mod($mod_folder);
-if ($security == true)
-  {
-    
+
 define("TABLE_XTENSE_CALLBACKS", $table_prefix."xtense_callbacks");
 define("TABLE_CDR", $table_prefix."cdr");
 define("TABLE_MOD_CDR", $table_prefix."mod_cdr");
 
-require_once("mod/cdr/lang/lang_fr.php");
-//modif 3.0.7
-//if (file_exists("mod/cdr/lang/lang_".$server_config['language'].".php")) require_once("mod/cdr/lang/lang_".$server_config['language'].".php");
-
 // Creation table qui recevra les infos de Xtense
 $query = "CREATE TABLE IF NOT EXISTS ".TABLE_CDR." ("
-	." id INT NOT NULL AUTO_INCREMENT,"
-	." date INT(11) NOT NULL,"
-	." total INT(11) NOT NULL,"
-	." metal INT(11) NOT NULL,"
-	." cristal INT(11) NOT NULL,"
-	." gal INT(1) NOT NULL,"
-	." coord TEXT NOT NULL,"
-	." PRIMARY KEY (id)"
+	." `id` INT NOT NULL AUTO_INCREMENT,"
+	." `date` INT(11) NOT NULL,"
+	." `total` INT(11) NOT NULL,"
+	." `metal` INT(11) NOT NULL,"
+	." `cristal` INT(11) NOT NULL,"
+	." `gal` INT(1) NOT NULL,"
+	." `coord` TEXT NOT NULL,"
+	." PRIMARY KEY (`id`)"
 	.")";
 $db->sql_query($query);
 
@@ -74,23 +67,21 @@ if (file_exists($filename)) $file = file($filename);
 
 // Insertion de la liaison entre Xtense v2 et cdr
 // Quelle est l'ID du mod ?
-		// On récupère le n° d'id du mod
-		$query = "SELECT `id` FROM `".TABLE_MOD."` WHERE `action`='cdr' AND `active`='1' LIMIT 1";
-		$result = $db->sql_query($query);
-		$mod_id = $db->sql_fetch_row($result);
-		$mod_id = $mod_id[0];
+// On récupère le n° d'id du mod
+$query = "SELECT `id` FROM `".TABLE_MOD."` WHERE `action`='cdr' AND `active`='1' LIMIT 1";
+$result = $db->sql_query($query);
+$mod_id = $db->sql_fetch_row($result);
+$mod_id = $mod_id[0];
 
 // On regarde si la table xtense_callbacks existe :
 $result = $db->sql_query('SHOW tables LIKE "'.TABLE_XTENSE_CALLBACKS.'"');
 if ($db->sql_numrows($result) != 0) {
-	// Maintenant on regarde si cdr est dedans
-	$result = $db->sql_query("SELECT * FROM ".TABLE_XTENSE_CALLBACKS." WHERE mod_id = '$mod_id'");
-	$nresult = $db->sql_numrows($result);
+    // Maintenant on regarde si cdr est dedans
+    $result = $db->sql_query("SELECT * FROM " . TABLE_XTENSE_CALLBACKS . " WHERE `mod_id` = '$mod_id'");
+    $nresult = $db->sql_numrows($result);
 
-	// S'il n'y est pas : alors on l'ajoute !
-	if ($nresult == 0) $db->sql_query("INSERT INTO ".TABLE_XTENSE_CALLBACKS." (mod_id, function, type, active) VALUES ('".$mod_id."', 'cdr', 'system', 1)");
-	echo "<script>alert('".$lang['xtense_ok']."')</script>";
-} else // On averti qu'Xtense 2 n'est pas installé :
-	echo "<script>alert('".$lang['no_xtense']."')</script>";
+    // S'il n'y est pas : alors on l'ajoute !
+    if ($nresult == 0) {
+        $db->sql_query("INSERT INTO " . TABLE_XTENSE_CALLBACKS . " (`mod_id`, `function`, `type`, `active`) VALUES ('" . $mod_id . "', 'cdr', 'system', 1)");
+    }
 }
-
