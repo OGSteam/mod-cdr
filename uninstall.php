@@ -18,8 +18,6 @@ define("TABLE_MOD_CDR", $table_prefix."mod_cdr");
 $mod_folder = "cdr";
 $mod_name = "Champs de ruines";
 
-require_once("mod/cdr/lang/lang_cdr.php");
-
 // On récupère l'id du mod pour xtense...
 $query = "SELECT id FROM ".TABLE_MOD." WHERE action='cdr'";
 $result = $db->sql_query($query);
@@ -37,12 +35,8 @@ if ($db->sql_numrows($result) != 0) {
 		// Il est  dedans alors on l'enlève :
 		$query = 'DELETE FROM '.TABLE_XTENSE_CALLBACKS.' WHERE mod_id = '.$mod_id;
 		$db->sql_query($query);
-		echo "<script>alert('".$lang['xtense_gone']."')</script>";
 	}
 }
-echo "<script>alert(".$lang['xtense_gone'].")</script>";
-
-$mod_uninstall_name = "cdr";
 $mod_uninstall_table = $table_prefix."cdr".', '.$table_prefix."mod_cdr";
 uninstall_mod($mod_name, $mod_uninstall_table);
 
