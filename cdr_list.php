@@ -17,6 +17,10 @@
 </table>
 
 <?php
+// On récupère les technos pourle Fret
+$user_empire = user_get_empire($user_data['user_id']);
+$user_technology = $user_empire["technology"];
+$fret_recycleur = (20000 * (1 + 0.05 * $user_technology['Hyp']));
 // On surligne la G Sélectionnée
     $galaxy = (isset($pub_galaxy)) ? $pub_galaxy : "all";
     if($galaxy === 'all'){
@@ -41,10 +45,19 @@
     <tbody style="text-align:center">
     <?php
     if (isset($pub_galaxy) && $pub_galaxy != "") {
-        if ($pub_galaxy == "all") $galax = "";
-        else $galax = " AND gal = '" . $pub_galaxy . "'";
-    } elseif (!empty($tc['galaxy'])) $galax = " AND gal = '" . $tc['galaxy'] . "'";
-    else $galax = "";
+        if ($pub_galaxy == "all")
+        {
+            $galax = "";
+        }
+        else {
+            $galax = " AND gal = '" . $pub_galaxy . "'";
+        }
+    } elseif (!empty($tc['galaxy'])) {
+        $galax = " AND gal = '" . $tc['galaxy'] . "'";
+    }
+    else {
+        $galax = "";
+    }
 
     $sql = "SELECT * FROM " . T_CDR . " WHERE `total` > '" . $tc['taille'] . "'" . $galax . " ORDER BY " . $tc['tri1'] . " " . $tc['tri2'];
     $result = $db->sql_query($sql);
@@ -61,16 +74,16 @@
 
         <tr>
             <td class='' ><?php echo $val['gal'] . $val['coord']; ?></td>
-            <td class='' ><?php echo floor($val['total'] / 20000 + 1); ?></td>
+            <td class='' ><?php echo floor($val['total'] / $fret_recycleur); ?></td>
             <td class='' ><?php
                 if ($val['total'] >= $tc['big']) {
-                    echo "<span style='text-color:#" . $tc['big_color'] . "'>" . $cdr_tot . "</span>";
+                    echo "<span style='text-color:\#" . $tc['big_color'] . "'>" . $cdr_tot . "</span>";
                 }
                 elseif ($cdr_total >= $tc['medium']) {
-                    echo "<span style='color:#" . $tc['medium_color'] . "'>" . $cdr_tot . "</span>";
+                    echo "<span style='color:\#" . $tc['medium_color'] . "'>" . $cdr_tot . "</span>";
                 }
                 elseif ($cdr_total > $tc['small']) {
-                    echo "<span style='color:#" . $tc['small_color'] . "'>" . $cdr_tot . "</span>";
+                    echo "<span style='color:\#" . $tc['small_color'] . "'>" . $cdr_tot . "</span>";
                 }
                 else {
                     echo $cdr_tot;
