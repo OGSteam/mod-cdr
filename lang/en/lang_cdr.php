@@ -4,6 +4,7 @@
 # Date : 08/01/2010
 # Version : 1.70
 
+$lang['title'] = "Debris field";
 $lang['menu_cdr'] = "Debris field";
 $lang['menu_option'] = "Option";
 $lang['coord'] = "Coordinates";

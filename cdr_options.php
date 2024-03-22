@@ -33,84 +33,118 @@ if (isset($pub_add) == 1) {
 }
 ?>
 
-<br/>
+<br />
 
 <form action="index.php?action=cdr&subaction=option" name="form1" method="POST">
-    <input type="hidden" name="add" value="1"/>
-    <table width='80%'>
-        <tr>
-            <td class='c' colspan='6' style="text-align: center;"><?php echo $user_data['user_name']; ?></td>
-        </tr>
+    <input type="hidden" name="add" value="1" />
+    <table class="og-table og-little-table">
+        <thead>
+            <tr>
+                <th><?php echo $user_data['user_name']; ?></th>
+            </tr>
+        </thead>
     </table>
-    <br/>
-    <table width='20%'>
-        <td class='c' colspan='2' style="text-align: center;">Xtense</td>
-        <tr>
-            <th class='c' width='50%'><?php echo $lang['tcdt']; ?></th>
-            <th class='c' width='25%'>
-                <input style="text-align:center" type="text" name="taille0" size="10" maxlength="10" value="<?php echo $tc['taille']; ?>"/>
+
+    <table class="og-table og-small-table">
+        <thead>
+            <tr>
+                <th colspan="2">Xtense</th>
+            <tr>
+        </thead>
+        <tbody>
+            <td class="tdstat">
+                <?php echo $lang['tcdt']; ?>
+            </td>
+            <td class="tdvalue">
+                <input style="text-align:center" type="text" name="taille0" size="10" maxlength="10" value="<?php echo $tc['taille']; ?>" />
+            </td>
+        </tbody>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <?php echo $lang['colorcdr']; ?>
+                </th>
+            <tr>
+        </thead>
+        <tbody>
+            <td class="tdstat">
+                <?php echo $lang['more_than']; ?><input style="text-align:center" type="text" size="10" name="T_Small" value="<?php echo $tc['small']; ?>" />
+            </td>
+            <td class="tdvalue" style="align='center';background-color:#<?php echo $tc['small_color']; ?>">
+                <input style="text-align:center" size="10" type="text" name="C_Small" maxlength="6" value="<?php echo $tc['small_color']; ?>" />
+            </td>
+            </tr>
+            <tr>
+                <td class="tdstat">
+                    <?php echo $lang['more_than']; ?> <input style="text-align:center" type="text" size="10" name="t_med" value="<?php echo $tc['medium']; ?>" />
+                </td>
+                <td class="tdvalue" style="align='center';background-color:#<?php echo $tc['medium_color']; ?>">
+                    <input style="text-align:center" size="10" type="text" name="C_med" maxlength="6" value="<?php echo $tc['medium_color']; ?>" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tdstat">
+                    <?php echo $lang['more_than']; ?> <input style="text-align:center" type="text" size="10" name="t_big" value="<?php echo $tc['big']; ?>" />
+                </td>
+                <td class="tdvalue" style="align='center';background-color:#<?php echo $tc['big_color']; ?>">
+                    <input style="text-align:center" size="10" type="text" name="C_big" maxlength="6" value="<?php echo $tc['big_color']; ?>" />
+                </td>
+            </tr>
+        </tbody>
+        <thead>
+            <th colspan="2">
+                <?php echo $lang['tri']; ?>
             </th>
-        </tr>
-        <td class='c' colspan='2' style="text-align: center;"><?php echo $lang['colorcdr']; ?></td>
-        <tr>
-            <th class='c' width='20%'><?php echo $lang['more_than']; ?><input style="text-align:center"
-                                                                              type="text" size="10"
-                                                                              name="T_Small"
-                                                                              value="<?php echo $tc['small']; ?>"/>
-            </th>
-            <td align='center' BGCOLOR="#<?php echo $tc['small_color']; ?>">
-                <input style="text-align:center" size="10" type="text" name="C_Small" maxlength="6" value="<?php echo $tc['small_color']; ?>"/></td>
-        </tr>
-        <tr>
-            <th class='c' width='20%'><?php echo $lang['more_than']; ?> <input style="text-align:center"
-                                                                               type="text" size="10"
-                                                                               name="t_med"
-                                                                               value="<?php echo $tc['medium']; ?>"/>
-            </th>
-            <td align='center' BGCOLOR="#<?php echo $tc['medium_color']; ?>">
-                <input style="text-align:center" size="10" type="text" name="C_med" maxlength="6" value="<?php echo $tc['medium_color']; ?>"/></td>
-        </tr>
-        <tr>
-            <th class='c' width='20%'><?php echo $lang['more_than']; ?> <input style="text-align:center"
-                                                                               type="text" size="10"
-                                                                               name="t_big"
-                                                                               value="<?php echo $tc['big']; ?>"/>
-            </th>
-            <td align='center' BGCOLOR="#<?php echo $tc['big_color']; ?>">
-                <input style="text-align:center" size="10" type="text" name="C_big" maxlength="6" value="<?php echo $tc['big_color']; ?>"/></td>
-        </tr>
-        <td class='c' colspan='2' style="text-align: center;"><?php echo $lang['tri']; ?></td>
-        <tr>
-            <th>
-                <select name="tri1">
-                    <option value="coord"<?php echo($tc['tri1'] == "coord" ? " selected" : ""); ?>><?php echo $lang['coord']; ?></option>
-                    <option value="total"<?php echo($tc['tri1'] == "total" ? " selected" : ""); ?>><?php echo $lang['total']; ?></option>
-                    <option value="metal"<?php echo($tc['tri1'] == "metal" ? " selected" : ""); ?>><?php echo $lang['metal']; ?></option>
-                    <option value="cristal"<?php echo($tc['tri1'] == "cristal" ? " selected" : ""); ?>><?php echo $lang['crystal']; ?></option>
-                    <option value="date"<?php echo($tc['tri1'] == "date" ? " selected" : ""); ?>><?php echo $lang['date']; ?></option>
-                </select>
-            </th>
-            <th>
-                <select name="tri2">
-                    <option value="asc"<?php echo($tc['tri2'] == "asc" ? " selected" : ""); ?>><?php echo $lang['ascending']; ?></option>
-                    <option value="desc"<?php echo($tc['tri2'] == "desc" ? " selected" : ""); ?>><?php echo $lang['descending']; ?></option>
-                </select>
-            </th>
-        </tr>
-        <tr>
-            <th class='c' width='50%'><?php echo $lang['galaxy']; ?></th>
-            <th class='c' width='25%'>
-                <input style="text-align:center" type="text" name="gal" size="10" maxlength="10" value="<?php echo $tc['galaxy']; ?>"/>
-            </th>
-        </tr>
-        </tr>
-        <td class='c' colspan='2' style="text-align: center;"><?php echo $lang['retention']; ?></td>
-        <tr>
-            <th class='c' width='50%'><?php echo $lang['retention_days']; ?></th>
-            <th class='c' width='25%'>
-                <input style="text-align:center" type="text" name="retention" size="10" maxlength="10" value="<?php echo $tc['retention']; ?>"/>
-            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tdstat">
+                    <select name="tri1">
+                        <option value="coord" <?php echo ($tc['tri1'] == "coord" ? " selected" : ""); ?>><?php echo $lang['coord']; ?></option>
+                        <option value="total" <?php echo ($tc['tri1'] == "total" ? " selected" : ""); ?>><?php echo $lang['total']; ?></option>
+                        <option value="metal" <?php echo ($tc['tri1'] == "metal" ? " selected" : ""); ?>><?php echo $lang['metal']; ?></option>
+                        <option value="cristal" <?php echo ($tc['tri1'] == "cristal" ? " selected" : ""); ?>><?php echo $lang['crystal']; ?></option>
+                        <option value="date" <?php echo ($tc['tri1'] == "date" ? " selected" : ""); ?>><?php echo $lang['date']; ?></option>
+                    </select>
+                </td>
+                <td class="tdvalue">
+                    <select name="tri2">
+                        <option value="asc" <?php echo ($tc['tri2'] == "asc" ? " selected" : ""); ?>><?php echo $lang['ascending']; ?></option>
+                        <option value="desc" <?php echo ($tc['tri2'] == "desc" ? " selected" : ""); ?>><?php echo $lang['descending']; ?></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdstat">
+                    <?php echo $lang['galaxy']; ?>
+                </td>
+                <td class="tdvalue">
+                    <input style="text-align:center" type="text" name="gal" size="10" maxlength="10" value="<?php echo $tc['galaxy']; ?>" />
+                </td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <?php echo $lang['retention']; ?>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tdstat">
+                    <?php echo $lang['retention_days']; ?>
+                </td>
+                <td class="tdvalue">
+                    <input style="text-align:center" type="text" name="retention" size="10" maxlength="10" value="<?php echo $tc['retention']; ?>" />
+                </td>
+</tr>
+<tr>
+                    <td colspan="2">
+                        <input class="og-button" name="add_taille"  type="submit" value="<?php echo $lang['update']; ?>">
+                    </td>
+                </tr>
+        <tbody>
     </table>
-    <br/>
-    <input type="submit" name="add_taille" value="<?php echo $lang['update']; ?>"/>
 </form>
+

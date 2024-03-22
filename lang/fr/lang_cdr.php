@@ -4,6 +4,7 @@
 # Date : 08/01/2010
 # Version : 1.70
 
+$lang['title'] = "Champs de ruines";
 $lang['menu_cdr'] = "Champs de ruines";
 $lang['menu_option'] = "Options";
 $lang['coord'] = "Coordonnées";
