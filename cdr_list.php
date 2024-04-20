@@ -38,11 +38,12 @@ $user_empire = user_get_empire($user_data['user_id']);
 $user_technology = $user_empire["technology"];
 // todo utiliser formule de pitch
 $fret_recycleur = 20000; 
-if ($user_technology['Hyp'] !=0)
+if ((int)$user_technology['Hyp'] !=0) // (int) sinon bug sous windows ( uwamp)
 {
-    $fret_recycleur = (20000 * (1 + 0.05 * $user_technology['Hyp']));
+    $fret_recycleur = (20000 * (1 + 0.05 * (int)$user_technology['Hyp'])); 
 }
 ?>
+
 
 <br>
 
