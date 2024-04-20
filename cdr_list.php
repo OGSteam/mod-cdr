@@ -36,9 +36,14 @@ for ($i = 1; $i <= $server_config['num_of_galaxies']; $i++) {
 // On récupère les technos pourle Fret
 $user_empire = user_get_empire($user_data['user_id']);
 $user_technology = $user_empire["technology"];
-$fret_recycleur = (20000 * (1 + 0.05 * $user_technology['Hyp']));
-
+// todo utiliser formule de pitch
+$fret_recycleur = 20000; 
+if ($user_technology['Hyp'] !=0)
+{
+    $fret_recycleur = (20000 * (1 + 0.05 * $user_technology['Hyp']));
+}
 ?>
+
 <br>
 
 <table id="trier" class="og-table og-medium-table">
