@@ -5,7 +5,7 @@
 * @author Machine
 * @co-author Capi
 * @version 1.62
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+* @license https://opensource.org/licenses/gpl-license.php GNU Public License
 * @description Fichier de mise à jour du mod Cdr
 */
 
