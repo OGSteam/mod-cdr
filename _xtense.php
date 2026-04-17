@@ -5,7 +5,7 @@
  * @author Machine
  * @co-author Capi
  * @version 1.60
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @license https://opensource.org/licenses/gpl-license.php GNU Public License
  * @description Fichier de liaison xtense avec le mod Cdr
  */
 
@@ -61,26 +61,26 @@ function cdr($system)
     // timestamp actuel
     $date = time();
 
+    $gal = (int)$system['galaxy'];
+
     // On boucle dans la liste des résultats et on insert dans la DB
-    for ($i = 0; $i < count($system['data']); $i++) {
-        $rows = $i + 1;
-        // galaxie
-        $gal = $system['galaxy'];
-        $sys = ':' . $system['system'] . ':' . $rows;
+    // Iterate all 15 positions so the preventive DELETE covers empty slots too
+    for ($i = 1; $i <= 15; $i++) {
+        $sys = ':' . (int)$system['system'] . ':' . $i;
 
-        $metal = isset($system['data'][$rows]['debris']['metal']) ? $system['data'][$rows]['debris']['metal'] : 0;
-        $cristal = isset($system['data'][$rows]['debris']['cristal']) ? $system['data'][$rows]['debris']['cristal'] : 0;
+        $metal     = isset($system['data'][$i]['debris']['metal'])     ? (int)$system['data'][$i]['debris']['metal']     : 0;
+        $crystal   = isset($system['data'][$i]['debris']['cristal'])   ? (int)$system['data'][$i]['debris']['cristal']   : 0;
+        $deuterium = isset($system['data'][$i]['debris']['deuterium']) ? (int)$system['data'][$i]['debris']['deuterium'] : 0;
 
-        $total = $metal + $cristal;
+        $total = $metal + $crystal + $deuterium;
         // suppression preventive (pas de doublons et effacement des cdr qui n'existent plus)
         // on supprime du param config
         $query = "DELETE FROM " . TABLE_CDR . " WHERE `gal`='$gal' AND `coord`='$sys'";
         $db->sql_query($query);
 
         // si un cdr est present
-        if ($total !== 0 && $total > 5000) {
-            //test
-            $query = "INSERT INTO " . TABLE_CDR . " (`date`, `total`, `metal`, `cristal`, `gal`, `coord`) VALUES ('$date', '$total', '$metal', '$cristal', '$gal', '$sys')";
+        if ($total > 5000) {
+            $query = "INSERT INTO " . TABLE_CDR . " (`date`, `total`, `metal`, `cristal`, `deuterium`, `gal`, `coord`) VALUES ('$date', '$total', '$metal', '$crystal', '$deuterium', '$gal', '$sys')";
             $db->sql_query($query);
         }
     }

@@ -5,7 +5,7 @@
 * @author Machine
 * @co-author Capi
 * @version 1.60
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+* @license https://opensource.org/licenses/gpl-license.php GNU Public License
 * @description Fichier de désinstallation du mod Cdr
 */
 

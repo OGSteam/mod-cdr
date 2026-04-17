@@ -5,7 +5,7 @@
 * @author Machine
 * @co-author Capi
 * @version 1.62
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+* @license https://opensource.org/licenses/gpl-license.php GNU Public License
 * @description Fichier de mise à jour du mod Cdr
 */
 
@@ -25,6 +25,10 @@ $ver = $db->sql_fetch_row($req);
 if (version_compare($ver[0], '1.9.0', '<'))  {
     $query = "ALTER TABLE " . TABLE_MOD_CDR . " ADD `retention` varchar(3) default '2' not null";
     $req = $db->sql_query($query);
+}
+
+if (version_compare($ver[0], '2.0.0', '<'))  {
+    $db->sql_query("ALTER TABLE " . TABLE_CDR . " ADD COLUMN IF NOT EXISTS `deuterium` INT(11) NOT NULL DEFAULT 0");
 }
 
 update_mod($mod_folder, $mod_name);

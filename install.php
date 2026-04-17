@@ -5,7 +5,7 @@
 * @author Machine
 * @co-author Capi
 * @version 1.62
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+* @license https://opensource.org/licenses/gpl-license.php GNU Public License
 * @description Fichier d'installation du mod Cdr
 */
 
@@ -27,6 +27,7 @@ $query = "CREATE TABLE IF NOT EXISTS ".TABLE_CDR." ("
 	." `total` INT(11) NOT NULL,"
 	." `metal` INT(11) NOT NULL,"
 	." `cristal` INT(11) NOT NULL,"
+	." `deuterium` INT(11) NOT NULL DEFAULT 0,"
 	." `gal` INT(1) NOT NULL,"
 	." `coord` TEXT NOT NULL,"
 	." PRIMARY KEY (`id`)"
