@@ -40,7 +40,7 @@ if (isset($pub_add) == 1) {
     <table class="og-table og-little-table">
         <thead>
             <tr>
-                <th><?php echo $user_data['user_name']; ?></th>
+                <th><?php echo $user_data['name']; ?></th>
             </tr>
         </thead>
     </table>

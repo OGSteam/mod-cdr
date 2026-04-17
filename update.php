@@ -27,5 +27,9 @@ if (version_compare($ver[0], '1.9.0', '<'))  {
     $req = $db->sql_query($query);
 }
 
+if (version_compare($ver[0], '2.0.0', '<'))  {
+    $db->sql_query("ALTER TABLE " . TABLE_CDR . " ADD COLUMN IF NOT EXISTS `deuterium` INT(11) NOT NULL DEFAULT 0");
+}
+
 update_mod($mod_folder, $mod_name);
 

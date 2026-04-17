@@ -33,14 +33,15 @@ for ($i = 1; $i <= $server_config['num_of_galaxies']; $i++) {
 
 
 <?php
-// On récupère les technos pourle Fret
-$user_empire = user_get_empire($user_data['user_id']);
-$user_technology = $user_empire["technology"];
-// todo utiliser formule de pitch
-$fret_recycleur = 20000; 
-if ((int)$user_technology['Hyp'] !=0) // (int) sinon bug sous windows ( uwamp)
-{
-    $fret_recycleur = (20000 * (1 + 0.05 * (int)$user_technology['Hyp'])); 
+// On récupère les technos pour le Fret
+$fret_recycleur = 20000;
+if (!empty($user_data['player_id'])) {
+    $user_empire = player_get_empire($user_data['player_id']);
+    $user_technology = $user_empire["technology"];
+    if (!empty($user_technology['Hyp']) && (int)$user_technology['Hyp'] != 0)
+    {
+        $fret_recycleur = (20000 * (1 + 0.05 * (int)$user_technology['Hyp']));
+    }
 }
 ?>
 
@@ -55,6 +56,7 @@ if ((int)$user_technology['Hyp'] !=0) // (int) sinon bug sous windows ( uwamp)
             <th class='' data-sort-method='' style="text-align:center"><?php echo $lang['total']; ?></th>
             <th class='' data-sort-method='' style="text-align:center"><?php echo $lang['metal']; ?></th>
             <th class='' data-sort-method='' style="text-align:center"><?php echo $lang['crystal']; ?></th>
+            <th class='' data-sort-method='' style="text-align:center"><?php echo $lang['deuterium']; ?></th>
             <th class='' data-sort-method='' style="text-align:center"><?php echo $lang['date']; ?></th>
         </tr>
     </thead>
@@ -83,6 +85,8 @@ if ((int)$user_technology['Hyp'] !=0) // (int) sinon bug sous windows ( uwamp)
             $cdr_met = number_format($val['metal'], 0, '', ' ');
             $cdr_cristal = $val['cristal'];
             $cdr_cri = number_format($val['cristal'], 0, '', ' ');
+            $cdr_deuterium = $val['deuterium'] ?? 0;
+            $cdr_deu = number_format($cdr_deuterium, 0, '', ' ');
         ?>
 
             <tr>
@@ -122,6 +126,7 @@ if ((int)$user_technology['Hyp'] !=0) // (int) sinon bug sous windows ( uwamp)
                                 }
 
                                 ?></td>
+                <td class=''><?php echo $cdr_deu; ?></td>
                 <td class=''><?php echo date($lang['date_format'], $val['date']); ?></td>
             </tr>
 

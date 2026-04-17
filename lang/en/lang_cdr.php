@@ -12,6 +12,7 @@ $lang['nb_recy'] = "Number of Recycler";
 $lang['total'] = "Total";
 $lang['metal'] = "Metal";
 $lang['crystal'] = "Crystal";
+$lang['deuterium'] = "Deuterium";
 $lang['date'] = "Date";
 $lang['date_format'] = "m/d/Y H:i:s";
 $lang['more_than'] = "more than";
